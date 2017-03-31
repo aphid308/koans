@@ -33,16 +33,24 @@ from runner.koan import *
 #
 # Your goal is to write the score method.
 
-#ef score(dice):
-    #numbers = {}.fromkeys(range(0, 10), 0)
-   # for n in numbers:
-  #      numbers[n] += dice.count(n)
- #   sum = (numbers[1] // 3) * 1000
-#    sum += (numbers[1] % 3
+def score(dice):
+    numbers = {}.fromkeys(range(0, 10), 0)
+
+    for d in dice:
+        numbers[d] += 1
+
+    sum = (numbers[1] // 3) * 1000
+    sum += (numbers[1] % 3) * 100
+    sum += (numbers[5] % 3) * 50
+
+    for r in range(2,10):
+        sum += (numbers[r] // 3) * 100 * r
+
+    return sum
 
 class AboutScoringProject(Koan):
     def test_score_of_an_empty_list_is_zero(self):
-        self.assertEqual('0 points', score([]))
+        self.assertEqual(0, score([]))
 
     def test_score_of_a_single_roll_of_5_is_50(self):
         self.assertEqual(50, score([5]))
