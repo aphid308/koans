@@ -40,7 +40,7 @@ def score(dice):
 
 class AboutScoringProject(Koan):
     def test_score_of_an_empty_list_is_zero(self):
-        self.assertEqual(0, score([]))
+        self.assertEqual(4, score([]))
 
     def test_score_of_a_single_roll_of_5_is_50(self):
         self.assertEqual(50, score([5]))
